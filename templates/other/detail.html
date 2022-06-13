@@ -1,0 +1,15 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+
+{% block title %} ->{{ detail.title }} {% endblock %}
+{% block head %}{% endblock %}
+
+{% block body %}
+    <a href="{% url 'home:delete' detail.id %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'home:update_todo' detail.id %}" class="btn btn-info">Update</a>
+    <h3>{{ detail.title }}</h3>
+    <small>{{ detail.created }}</small>
+    <hr>
+    <p>{{ detail.body }}</p>
+
+{% endblock %}

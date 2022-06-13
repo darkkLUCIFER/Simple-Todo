@@ -1,0 +1,35 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+{% block title %}new-todo{% endblock %}
+{% block head %}{% endblock %}
+
+{% block body %}
+    <h1>اضافه کردن تسک جدید</h1>
+    <form method="POST">
+        {% csrf_token %}
+        موضوع:
+        <input type="text" name="title">
+        <br>
+        توضیحات:
+        <textarea name="body"></textarea>
+        <br>
+        زمان:
+        <input type="datetime-local" name="created">
+        <br><br>
+        <input type="submit" value="ثبت">
+    </form>
+    {% if form.errors %}
+        لطفا خطاهای زیر را رفع کنید:
+        {% for field in form %}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    {{ field.label }} : {{ error }}
+                    <br>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
+    {% endif %}
+{% endblock %}

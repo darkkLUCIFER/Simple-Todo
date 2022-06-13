@@ -1,0 +1,12 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+{% block title %} update-todo {% endblock %}
+{% block head %}{% endblock %}
+
+{% block body %}
+    <h1>تغییر اطلاعات تسک</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="ثبت تغییرات">
+{% endblock %}
